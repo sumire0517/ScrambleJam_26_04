@@ -15,13 +15,13 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.Space) && gameObject.CompareTag("Player") && (Time.time - lastShootTime_1 > 0.1f))  
+        if (Input.GetKey(KeyCode.Space) && gameObject.CompareTag("Bullet1") && (Time.time - lastShootTime_1 > 0.1f))  
         {
             Instantiate(PlayerBullet, this.transform.position, Quaternion.identity);                         
             lastShootTime_1 = Time.time;
         }
 
-        if (Input.GetKey(KeyCode.Return) && gameObject.CompareTag("Player2") && (Time.time - lastShootTime_2 > 0.1f))   
+        if (Input.GetKey(KeyCode.Return) && gameObject.CompareTag("Bullet2") && (Time.time - lastShootTime_2 > 0.1f))   
         {
             Instantiate(PlayerBullet, this.transform.position, Quaternion.identity); 
             lastShootTime_2 = Time.time;               
