@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float speed = 20f;
+    public Collider2D other;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,10 +15,22 @@ public class PlayerBullet : MonoBehaviour
     void Update()
     {
         transform.Translate(0, speed * Time.deltaTime, 0);
-        if (transform.position.y > 3f)
+        if (transform.position.y > 5f)
         {
             Destroy(gameObject);
         }
 
+
+        
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Boss"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
 }
