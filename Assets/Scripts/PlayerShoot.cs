@@ -12,9 +12,21 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))   // Enterキーを押した場合
+
+        if (Input.GetKeyDown(KeyCode.Space))  
         {
-            Instantiate(PlayerBullet, this.transform.position, Quaternion.identity);  // 弾を表示させて座標を移動させる処理
+            if (gameObject.CompareTag("Player")){
+                Instantiate(PlayerBullet, this.transform.position, Quaternion.identity); 
+            }                        
         }
+
+        if (Input.GetKeyDown(KeyCode.Return))   
+        {
+            if (gameObject.CompareTag("Player2")){
+                Instantiate(PlayerBullet, this.transform.position, Quaternion.identity); 
+            }                        
+        }
+
+
     }
 }
