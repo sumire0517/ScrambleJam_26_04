@@ -1,17 +1,31 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
+
 public class PlayerControler : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] float movementSpeed; 
-    Rigidbody2D rb2d;
-    
+    [SerializeField] private float _minX = -8f;
+
+    [SerializeField] private float _maxX = 8f;
+    [SerializeField] private float _minY = -4.5f;
+
+    [SerializeField] private float _maxY = 4.5f;
+    Rigidbody2D rb2d;    
     InputAction moveAction;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
 
-        moveAction = InputSystem.actions["Move"];
+        if (gameObject.CompareTag("Player"))
+        {
+            moveAction = InputSystem.actions["Move_P1"];
+        }
+        else if (gameObject.CompareTag("Player2"))
+        {
+            moveAction = InputSystem.actions["Move_P2"];
+        }
         moveAction.Enable();
     }
 
@@ -20,11 +34,15 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         var x = moveAction.ReadValue<Vector2>().x; 
-        rb2d.linearVelocityX = x * movementSpeed;
         var y = moveAction.ReadValue<Vector2>().y; 
+
+        rb2d.linearVelocityX = x * movementSpeed;
         rb2d.linearVelocityY = y * movementSpeed;
-    
+
+        Vector2 pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, _minX, _maxX);
+        pos.y = Mathf.Clamp(pos.y, _minY, _maxY);
+        transform.position = pos;
     }
 }
