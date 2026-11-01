@@ -6,9 +6,9 @@ public class PlayerControler : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] float movementSpeed; 
-    [SerializeField] private float _minX = -8f;
+    [SerializeField] private float _minX = -7.5f;
 
-    [SerializeField] private float _maxX = 8f;
+    [SerializeField] private float _maxX = 7.5f;
     [SerializeField] private float _minY = -4.5f;
 
     [SerializeField] private float _maxY = 4.5f;
