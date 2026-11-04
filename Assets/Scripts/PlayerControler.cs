@@ -6,18 +6,22 @@ public class PlayerControler : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] float movementSpeed; 
-    [SerializeField] private float _minX = -7.5f;
+    private float _minX = -7.5f;
 
-    [SerializeField] private float _maxX = 7.5f;
-    [SerializeField] private float _minY = -4.5f;
+    private float _maxX = 7.5f;
+    private float _minY = -4.5f;
 
-    [SerializeField] private float _maxY = 4.5f;
+    private float _maxY = 4.5f;
     Rigidbody2D rb2d;    
     InputAction moveAction;
-    [SerializeField] public float player1Health = 100f;
-    [SerializeField] public float player2Health = 100f;
+    public float player1Health;
+    public float player2Health;
+    [SerializeField] public float maxPlayer1Health = 100f;
+    [SerializeField] public float maxPlayer2Health = 100f;
     void Start()
     {
+        player1Health = maxPlayer1Health;
+        player2Health = maxPlayer2Health;
         rb2d = GetComponent<Rigidbody2D>();
 
         if (gameObject.CompareTag("Player"))

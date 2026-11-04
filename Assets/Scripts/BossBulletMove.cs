@@ -27,17 +27,20 @@ public class BossBulletMove : MonoBehaviour
             
             if (player != null)
             {
-                player.player2Health -= bossBulletDamage; 
-                              
-            
-                player.player1Health -= bossBulletDamage;
+                if (player.CompareTag("Player"))
+                {
+                    player.player1Health -= bossBulletDamage; 
+
+                }
+                else if (player.CompareTag("Player2"))
+                {
+                    player.player2Health -= bossBulletDamage; 
+
+                }
+
                 Destroy(gameObject); 
             
             }
-            
-                
-                
-        
-            
+                   
     }
 }
