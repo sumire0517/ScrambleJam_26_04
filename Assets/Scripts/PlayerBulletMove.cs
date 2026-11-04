@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    [SerializeField] private float speed = 20f;
-    [SerializeField] public float bulletDamage = 10;
+    [SerializeField] private float playerBulletSpeed = 20f;
+    [SerializeField] public float playerBulletDamage = 10f;
     public Collider2D other;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,7 +15,7 @@ public class PlayerBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, speed * Time.deltaTime, 0);
+        transform.Translate(0, playerBulletSpeed * Time.deltaTime, 0);
         if (transform.position.y > 5f)
         {
             Destroy(gameObject);
@@ -30,9 +30,10 @@ public class PlayerBullet : MonoBehaviour
             BossControler boss = other.GetComponent<BossControler>();
             if (boss != null)
             {
-                boss.bossHealth -= bulletDamage;
+                boss.bossHealth -= playerBulletDamage;
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
+            
     }
 
 
