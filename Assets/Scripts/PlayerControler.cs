@@ -14,6 +14,8 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private float _maxY = 4.5f;
     Rigidbody2D rb2d;    
     InputAction moveAction;
+    [SerializeField] public float player1Health = 100;
+    [SerializeField] public float player2Health = 100;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -44,5 +46,26 @@ public class PlayerControler : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, _minX, _maxX);
         pos.y = Mathf.Clamp(pos.y, _minY, _maxY);
         transform.position = pos;
+
+
+
+
+        if ((player1Health <= 0) && gameObject.CompareTag("Player"))
+        {
+            DestroyPlayer();
+        }
+
+        if ((player2Health <= 0) && gameObject.CompareTag("Player2"))
+        {
+            DestroyPlayer();
+        }
+        
+
+
+    }
+
+        public void DestroyPlayer()
+    {
+        Destroy(gameObject);
     }
 }
