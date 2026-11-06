@@ -11,8 +11,8 @@ public class UI : MonoBehaviour
     private PlayerControler[] playerControler;
     void Start()
     {
-    bossControler = FindFirstObjectByType<BossControler>();
-    playerControler = FindObjectsByType<PlayerControler>(FindObjectsSortMode.None);
+        bossControler = FindFirstObjectByType<BossControler>();
+        playerControler = FindObjectsByType<PlayerControler>(FindObjectsSortMode.None);
     }
 
     // Update is called once per frame

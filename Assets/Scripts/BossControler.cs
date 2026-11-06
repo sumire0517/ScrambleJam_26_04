@@ -16,6 +16,7 @@ public class BossControler : MonoBehaviour
         if (bossHealth <= 0)
         {
             DestroyBoss();
+            Debug.Log("Boss Destroyed");
         }
     }
 

@@ -13,10 +13,14 @@ public class BossShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastShootTime > 0.5f)  
+        if (Time.time > 3.0f)
         {
-            Instantiate(BossBullet, this.transform.position, Quaternion.identity);                         
-            lastShootTime = Time.time;
+            if (Time.time - lastShootTime > 0.5f)  
+            {
+                Instantiate(BossBullet, this.transform.position, Quaternion.identity);                         
+                lastShootTime = Time.time;
+            }
         }
+        
     }
 }

@@ -18,8 +18,20 @@ public class PlayerControler : MonoBehaviour
     public float player2Health;
     [SerializeField] public float maxPlayer1Health = 100f;
     [SerializeField] public float maxPlayer2Health = 100f;
+    private static int activePlayerCount;
+    private static bool hadMultiplePlayers;
+    private bool isRegistered;
+
     void Start()
     {
+        if (activePlayerCount == 0)
+        {
+            hadMultiplePlayers = false;
+        }
+
+        activePlayerCount++;
+        hadMultiplePlayers |= activePlayerCount >= 2;
+        isRegistered = true;
         player1Health = maxPlayer1Health;
         player2Health = maxPlayer2Health;
         rb2d = GetComponent<Rigidbody2D>();
@@ -33,6 +45,22 @@ public class PlayerControler : MonoBehaviour
             moveAction = InputSystem.actions["Move_P2"];
         }
         moveAction.Enable();
+    }
+
+    void OnDestroy()
+    {
+        if (!isRegistered)
+        {
+            return;
+        }
+
+        activePlayerCount = Mathf.Max(0, activePlayerCount - 1);
+
+        if (activePlayerCount == 0 && hadMultiplePlayers)
+        {
+            Debug.Log("Both players destroyed");
+            hadMultiplePlayers = false;
+        }
     }
 
 
@@ -52,8 +80,6 @@ public class PlayerControler : MonoBehaviour
         transform.position = pos;
 
 
-
-
         if ((player1Health <= 0) && gameObject.CompareTag("Player"))
         {
             DestroyPlayer();
@@ -62,10 +88,7 @@ public class PlayerControler : MonoBehaviour
         if ((player2Health <= 0) && gameObject.CompareTag("Player2"))
         {
             DestroyPlayer();
-        }
-        
-
-
+        }   
     }
 
         public void DestroyPlayer()
