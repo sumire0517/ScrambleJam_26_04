@@ -1,5 +1,8 @@
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -13,5 +16,15 @@ public class GameOverUI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void retry_button()
+    {
+        SceneManager.LoadScene("Battle");
+    }
+
+        public void title_button()
+    {
+        SceneManager.LoadScene("Title");
     }
 }
