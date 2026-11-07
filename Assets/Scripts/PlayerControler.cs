@@ -12,7 +12,7 @@ public class PlayerControler : MonoBehaviour
     private float _minX = -7.5f;
 
     private float _maxX = 7.5f;
-    private float _minY = -4.5f;
+    private float _minY = -4.0f;
 
     private float _maxY = 4.5f;
     Rigidbody2D rb2d;    

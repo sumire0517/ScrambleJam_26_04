@@ -10,6 +10,12 @@ public class BossControler : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float bossHealth;
     [SerializeField] public float maxBossHealth = 1000;
+    private float _minX = -5.0f;
+
+    private float _maxX = 5.0f;
+    private float _minY = 2.0f;
+
+    private float _maxY = 4.0f;
     void Start()
     {
         bossHealth = maxBossHealth;
