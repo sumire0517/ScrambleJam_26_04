@@ -3,8 +3,8 @@ using UnityEngine;
 public class BossBulletMove : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] private float bossBulletSpeed = 10f;
-    [SerializeField] public float bossBulletDamage = 25f;
+    [SerializeField] private float bossBulletSpeed = 3f;
+    [SerializeField] public float bossBulletDamage = 20f;
     public Collider2D other;
     void Start()
     {

@@ -5,6 +5,7 @@ public class BossShoot : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject BossBullet; 
     private double lastShootTime = 0.0f;
+    private float angle = 0f; // Variable to keep track of the current angle
     void Start()
     {
         
@@ -15,9 +16,11 @@ public class BossShoot : MonoBehaviour
     {
         if (Time.time > 3.0f)
         {
-            if (Time.time - lastShootTime > 0.5f)  
+            if (Time.time - lastShootTime > 0.02f)  
             {
-                Instantiate(BossBullet, this.transform.position, Quaternion.identity);                         
+                angle += 10f; // Increment the angle for the next bullet
+                Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+                Instantiate(BossBullet, this.transform.position, rotation);                         
                 lastShootTime = Time.time;
             }
         }

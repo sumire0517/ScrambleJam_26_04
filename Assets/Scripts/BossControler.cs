@@ -15,17 +15,16 @@ public class BossControler : MonoBehaviour
     private float _minX = -5.0f;
 
     private float _maxX = 5.0f;
-    private float _minY = 2.0f;
 
-    private float _maxY = 4.0f;
     private double lastMoveTime = 0.0f;
     private Vector3 targetPosition;
-    public float smoothTime = 4f;
+    public float smoothTime = 0.4f;
     
 
     void Start()
     {
         bossHealth = maxBossHealth;
+        targetPosition = new Vector3(transform.position.x, 3.0f, 0f);
     }
 
     // Update is called once per frame
@@ -43,16 +42,18 @@ public class BossControler : MonoBehaviour
         {
             lastMoveTime = Time.time;
 
-            float nextX = Random.Range(_minX, _maxX);
-            float nextY = Random.Range(_minY, _maxY);
-
             Vector3 pos = transform.position;
-            targetPosition.x = Mathf.Clamp(nextX, _minX, _maxX);
-            targetPosition.y = Mathf.Clamp(nextY, _minY, _maxY);
-            targetPosition.z = transform.position.z;
+            float nextX = Random.Range(pos.x - 1f, pos.x + 1f);
+
+
+            nextX = Mathf.Clamp(nextX, _minX, _maxX);
+
+
+
+            targetPosition = new Vector3(nextX, 3.0f, 0f);
         }
 
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothTime * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, smoothTime * Time.deltaTime);
     }
 
     public void DestroyBoss()

@@ -209,6 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cface7304832466d8d2812309a4a775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossBulletSpeed: 10
-  bossBulletDamage: 25
+  bossBulletSpeed: 5
+  bossBulletDamage: 20
   other: {fileID: 0}

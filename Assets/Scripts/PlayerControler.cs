@@ -8,7 +8,7 @@ using System;
 public class PlayerControler : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] float movementSpeed; 
+    [SerializeField] float movementSpeed  = 6.0f; 
     private float _minX = -7.5f;
 
     private float _maxX = 7.5f;
@@ -19,8 +19,8 @@ public class PlayerControler : MonoBehaviour
     InputAction moveAction;
     public float player1Health;
     public float player2Health;
-    [SerializeField] public float maxPlayer1Health = 100f;
-    [SerializeField] public float maxPlayer2Health = 100f;
+    public float maxPlayer1Health = 100f;
+    public float maxPlayer2Health = 100f;
     private static int activePlayerCount;
     private static bool hadMultiplePlayers;
     private static bool suppressGameOver;

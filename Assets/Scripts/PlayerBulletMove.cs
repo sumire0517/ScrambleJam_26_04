@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    [SerializeField] private float playerBulletSpeed = 20f;
-    [SerializeField] public float playerBulletDamage = 10f;
+    private float playerBulletSpeed = 20f;
+    public float playerBulletDamage = 10f;
     public Collider2D other;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
