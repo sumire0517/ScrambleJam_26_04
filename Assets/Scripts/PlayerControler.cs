@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class PlayerControler : MonoBehaviour
@@ -60,6 +63,8 @@ public class PlayerControler : MonoBehaviour
         {
             Debug.Log("Both players destroyed");
             hadMultiplePlayers = false;
+            SceneManager.LoadScene("GameOver");
+            
         }
     }
 

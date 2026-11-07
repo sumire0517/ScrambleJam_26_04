@@ -1,4 +1,9 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
+using System;
 
 public class BossControler : MonoBehaviour
 {
@@ -17,6 +22,7 @@ public class BossControler : MonoBehaviour
         {
             DestroyBoss();
             Debug.Log("Boss Destroyed");
+            SceneManager.LoadScene("GameClear");
         }
     }
 
