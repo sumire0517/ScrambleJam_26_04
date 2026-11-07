@@ -22,6 +22,7 @@ public class BossControler : MonoBehaviour
         {
             DestroyBoss();
             Debug.Log("Boss Destroyed");
+            PlayerControler.SuppressGameOver();
             SceneManager.LoadScene("GameClear");
         }
     }
