@@ -5,25 +5,115 @@ public class BossShoot : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject BossBullet; 
     private double lastShootTime = 0.0f;
-    private float angle = 0f; // Variable to keep track of the current angle
+    private float angle = 0f; 
+    BossControler bossControler;
+    private int bulletCount = -6;
+    bool flag = true;
     void Start()
     {
-        
+        bossControler = GetComponentInParent<BossControler>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (bossControler == null || BossBullet == null)
+        {
+            return;
+        }
+
         if (Time.time > 3.0f)
         {
-            if (Time.time - lastShootTime > 0.02f)  
+            if (bossControler.bossHealth > 4000)
             {
-                angle += 10f; // Increment the angle for the next bullet
-                Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
-                Instantiate(BossBullet, this.transform.position, rotation);                         
-                lastShootTime = Time.time;
+                if (Time.time - lastShootTime > 0.5f)
+                {
+                    
+                    for (int i = 0; i < 36; i++)
+                    {
+                        Quaternion rotation = Quaternion.Euler(0f, 0f, angle + 10 * i);
+                        Instantiate(BossBullet, this.transform.position, rotation); 
+                    }
+                    lastShootTime = Time.time;
+                }
+            }
+            else if  (bossControler.bossHealth > 3000)
+            {
+                
+                if (Time.time - lastShootTime > 0.05f)
+                {
+                    
+                    Quaternion rotation = Quaternion.Euler(0f, 0f, 10 * bulletCount);
+                    Instantiate(BossBullet, this.transform.position, rotation); 
+                
+                    lastShootTime = Time.time;
+                    if (flag)
+                    {
+                        bulletCount += 1;
+                        Debug.Log("TrueBullet Count: " + bulletCount);
+                        if (bulletCount >= 6)
+                        {
+                            flag = false;
+                        }
+                    }
+                    else
+                    {
+                        bulletCount -= 1;
+                        Debug.Log("FalseBullet Count: " + bulletCount);
+                        if (bulletCount <= -6)
+                        {
+                            flag = true;
+                        }
+                    }
+                }
+
+
+            }
+            else if  (bossControler.bossHealth > 2000)
+            {
+                if (Time.time - lastShootTime > 0.01f)
+                {
+                    lastShootTime = Time.time;
+                    float add = Random.Range(-3f, 3f);
+                    Quaternion rotation = Quaternion.Euler(0f, 0f, 10 * bulletCount + add);
+                    Instantiate(BossBullet, this.transform.position, rotation); 
+                }
+                bulletCount += 1;
+            }
+            else if  (bossControler.bossHealth > 1000)
+            {
+                if (Time.time - lastShootTime > 0.3f)
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        for (int j = 0; j < 6; j++)
+                        {
+                            float add = Random.Range(0f, 40f);
+                            Quaternion rotation = Quaternion.Euler(0f, 0f, angle + 2 * i + j * 60 + add);
+                            Instantiate(BossBullet, this.transform.position, rotation); 
+                        }
+                    }
+                    lastShootTime = Time.time;
+                }
+
+            }
+            else
+            {
+                if (Time.time - lastShootTime > 0.02f)  
+                {
+                    angle += 10f; 
+                    Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+                    Instantiate(BossBullet, this.transform.position, rotation); 
+                    Quaternion rotation2 = Quaternion.Euler(0f, 0f, -angle + 2f);
+                    Instantiate(BossBullet, this.transform.position, rotation2);
+                                            
+                    lastShootTime = Time.time;
+                }
+                
             }
         }
+        
+
         
     }
 }

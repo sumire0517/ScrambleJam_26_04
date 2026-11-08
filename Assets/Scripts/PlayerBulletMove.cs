@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     private float playerBulletSpeed = 20f;
-    public float playerBulletDamage = 10f;
+    public float playerBulletDamage = 15f;
     public Collider2D other;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

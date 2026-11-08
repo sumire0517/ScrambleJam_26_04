@@ -24,6 +24,7 @@ public class BossControler : MonoBehaviour
     void Start()
     {
         bossHealth = maxBossHealth;
+        transform.position = ClampBossPosition(transform.position);
         targetPosition = new Vector3(transform.position.x, 3.0f, 0f);
     }
 
@@ -38,7 +39,7 @@ public class BossControler : MonoBehaviour
             SceneManager.LoadScene("GameClear");
         }
 
-        if (Time.time - lastMoveTime > 4.0f)
+        if (Time.time - lastMoveTime > 2.5f)
         {
             lastMoveTime = Time.time;
 
@@ -53,7 +54,16 @@ public class BossControler : MonoBehaviour
             targetPosition = new Vector3(nextX, 3.0f, 0f);
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, smoothTime * Time.deltaTime);
+        transform.position = ClampBossPosition(
+            Vector3.MoveTowards(transform.position, targetPosition, smoothTime * Time.deltaTime));
+    }
+
+    private Vector3 ClampBossPosition(Vector3 position)
+    {
+        position.x = Mathf.Clamp(position.x, _minX, _maxX);
+        position.y = 3.0f;
+        position.z = 0f;
+        return position;
     }
 
     public void DestroyBoss()

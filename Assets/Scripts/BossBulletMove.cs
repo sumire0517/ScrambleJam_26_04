@@ -15,7 +15,7 @@ public class BossBulletMove : MonoBehaviour
     void Update()
     {
         transform.Translate(0, -bossBulletSpeed * Time.deltaTime, 0);
-        if (transform.position.y < -5f)
+        if ((transform.position.y < -5f) || (transform.position.y > 5f) ||(transform.position.x < -9f) || (transform.position.x > 9f))
         {
             Destroy(gameObject);
         }

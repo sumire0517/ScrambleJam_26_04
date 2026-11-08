@@ -1661,6 +1661,7 @@ GameObject:
   - component: {fileID: 1391007654}
   - component: {fileID: 1391007656}
   - component: {fileID: 1391007655}
+  - component: {fileID: 1391007657}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -1866,9 +1867,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f6c7610994fd40889a3b26ff23d950c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossHealth: 1000
-  maxBossHealth: 5000
+  bossHealth: 5000
+  maxBossHealth: 1000
   smoothTime: 0.4
+--- !u!114 &1391007657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391007648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdeda356fe0940209068ab6f2532894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossBullet: {fileID: 0}
 --- !u!1 &1574269047
 GameObject:
   m_ObjectHideFlags: 0
