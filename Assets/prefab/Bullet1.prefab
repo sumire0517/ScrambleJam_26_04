@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9529412, g: 0.5764706, b: 0.6784314, a: 1}
+  m_Color: {r: 0.76862746, g: 0.76862746, b: 0.76862746, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5595f29cf424863976014d17ef7e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBulletSpeed: 20
   playerBulletDamage: 10
   other: {fileID: 0}
 --- !u!58 &-61553243904737358
