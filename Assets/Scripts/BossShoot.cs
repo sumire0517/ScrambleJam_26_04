@@ -1,9 +1,11 @@
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 public class BossShoot : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject BossBullet; 
+    public GameObject BossBulletPlus; 
+    public GameObject BossBulletMinus; 
     private double lastShootTime = 0.0f;
     private float angle = 0f; 
     BossControler bossControler;
@@ -35,7 +37,7 @@ public class BossShoot : MonoBehaviour
                     for (int i = 0; i < 36; i++)
                     {
                         Quaternion rotation = Quaternion.Euler(0f, 0f, angle + 10 * i);
-                        Instantiate(BossBullet, this.transform.position, rotation); 
+                        Instantiate(nextBullet(), this.transform.position, rotation); 
                     }
                     lastShootTime = Time.time;
                     PlayShotSound();
@@ -48,7 +50,7 @@ public class BossShoot : MonoBehaviour
                 {
                     
                     Quaternion rotation = Quaternion.Euler(0f, 0f, 10 * bulletCount);
-                    Instantiate(BossBullet, this.transform.position, rotation); 
+                    Instantiate(nextBullet(), this.transform.position, rotation); 
                     PlayShotSound();
                 
                     lastShootTime = Time.time;
@@ -81,7 +83,7 @@ public class BossShoot : MonoBehaviour
                     lastShootTime = Time.time;
                     float add = Random.Range(-3f, 3f);
                     Quaternion rotation = Quaternion.Euler(0f, 0f, 10 * bulletCount + add);
-                    Instantiate(BossBullet, this.transform.position, rotation); 
+                    Instantiate(nextBullet(), this.transform.position, rotation); 
                     PlayShotSound();
                 }
                 bulletCount += 1;
@@ -96,7 +98,7 @@ public class BossShoot : MonoBehaviour
                         {
                             float add = Random.Range(0f, 40f);
                             Quaternion rotation = Quaternion.Euler(0f, 0f, angle + 2 * i + j * 60 + add);
-                            Instantiate(BossBullet, this.transform.position, rotation); 
+                            Instantiate(nextBullet(), this.transform.position, rotation); 
                         }
                     }
                     PlayShotSound();
@@ -110,9 +112,9 @@ public class BossShoot : MonoBehaviour
                 {
                     angle += 10f; 
                     Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
-                    Instantiate(BossBullet, this.transform.position, rotation); 
+                    Instantiate(nextBullet(), this.transform.position, rotation); 
                     Quaternion rotation2 = Quaternion.Euler(0f, 0f, -angle + 2f);
-                    Instantiate(BossBullet, this.transform.position, rotation2);
+                    Instantiate(nextBullet(), this.transform.position, rotation2);
                     PlayShotSound();
                     lastShootTime = Time.time;
                 }
@@ -128,5 +130,22 @@ public class BossShoot : MonoBehaviour
     {
         audioSource.PlayOneShot(shotSe);
         Debug.Log("Shot sound played");
+    }
+
+    private GameObject nextBullet()
+    {
+        int n = Random.Range(0, 100);
+        if (n < 5)
+        {
+            return BossBulletPlus; 
+        }
+        else if (n < 10)
+        {
+            return BossBulletMinus; 
+        }
+        else
+        {
+            return BossBullet; 
+        }
     }
 }

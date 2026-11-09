@@ -278,7 +278,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1
+  m_Radius: 1.4
 --- !u!114 &40164788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,6 +864,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossBullet: {fileID: 1043034038301943819, guid: 87f894d3b25bf4ec4b5201e593988765, type: 3}
+  BossBulletPlus: {fileID: 1043034038301943819, guid: 3cbfb3df4a70f4818b0c606f6a422e0b, type: 3}
+  BossBulletMinus: {fileID: 1043034038301943819, guid: 7b0327e77e8af4dfabd89dabf9030ef8, type: 3}
   shotSe: {fileID: 8300000, guid: 5eef0620c045b454e8e5ae4d1ed99628, type: 3}
 --- !u!82 &660789776
 AudioSource:
@@ -2366,6 +2368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossBullet: {fileID: 0}
+  BossBulletPlus: {fileID: 0}
+  BossBulletMinus: {fileID: 0}
   shotSe: {fileID: 0}
 --- !u!1 &1574269047
 GameObject:
@@ -2604,7 +2608,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1
+  m_Radius: 1.4
 --- !u!114 &1898979122
 MonoBehaviour:
   m_ObjectHideFlags: 0

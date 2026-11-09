@@ -35,6 +35,6 @@ public class PlayerShoot : MonoBehaviour
         private void PlayShotSound()
     {
         audioSource.PlayOneShot(shotSe);
-        Debug.Log("Shot sound played");
+
     }
 }

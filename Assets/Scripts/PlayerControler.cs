@@ -63,7 +63,7 @@ public class PlayerControler : MonoBehaviour
 
         if (activePlayerCount == 0 && hadMultiplePlayers && !suppressGameOver)
         {
-            Debug.Log("Both players destroyed");
+            //Debug.Log("Both players destroyed");
             hadMultiplePlayers = false;
             SceneManager.LoadScene("GameOver");
         }
