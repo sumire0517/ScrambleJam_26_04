@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - BossBullet: {instanceID: 0}
+  - shotSe: {fileID: 8300000, guid: 5eef0620c045b454e8e5ae4d1ed99628, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

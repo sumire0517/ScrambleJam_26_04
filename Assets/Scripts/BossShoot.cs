@@ -8,10 +8,13 @@ public class BossShoot : MonoBehaviour
     private float angle = 0f; 
     BossControler bossControler;
     private int bulletCount = -6;
+    public AudioClip shotSe; 
+    private AudioSource audioSource;
     bool flag = true;
     void Start()
     {
         bossControler = GetComponentInParent<BossControler>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class BossShoot : MonoBehaviour
                         Instantiate(BossBullet, this.transform.position, rotation); 
                     }
                     lastShootTime = Time.time;
+                    PlayShotSound();
                 }
             }
             else if  (bossControler.bossHealth > 3000)
@@ -45,12 +49,13 @@ public class BossShoot : MonoBehaviour
                     
                     Quaternion rotation = Quaternion.Euler(0f, 0f, 10 * bulletCount);
                     Instantiate(BossBullet, this.transform.position, rotation); 
+                    PlayShotSound();
                 
                     lastShootTime = Time.time;
                     if (flag)
                     {
                         bulletCount += 1;
-                        Debug.Log("TrueBullet Count: " + bulletCount);
+                        //Debug.Log("TrueBullet Count: " + bulletCount);
                         if (bulletCount >= 6)
                         {
                             flag = false;
@@ -59,7 +64,7 @@ public class BossShoot : MonoBehaviour
                     else
                     {
                         bulletCount -= 1;
-                        Debug.Log("FalseBullet Count: " + bulletCount);
+                        //Debug.Log("FalseBullet Count: " + bulletCount);
                         if (bulletCount <= -6)
                         {
                             flag = true;
@@ -77,6 +82,7 @@ public class BossShoot : MonoBehaviour
                     float add = Random.Range(-3f, 3f);
                     Quaternion rotation = Quaternion.Euler(0f, 0f, 10 * bulletCount + add);
                     Instantiate(BossBullet, this.transform.position, rotation); 
+                    PlayShotSound();
                 }
                 bulletCount += 1;
             }
@@ -93,6 +99,7 @@ public class BossShoot : MonoBehaviour
                             Instantiate(BossBullet, this.transform.position, rotation); 
                         }
                     }
+                    PlayShotSound();
                     lastShootTime = Time.time;
                 }
 
@@ -106,7 +113,7 @@ public class BossShoot : MonoBehaviour
                     Instantiate(BossBullet, this.transform.position, rotation); 
                     Quaternion rotation2 = Quaternion.Euler(0f, 0f, -angle + 2f);
                     Instantiate(BossBullet, this.transform.position, rotation2);
-                                            
+                    PlayShotSound();
                     lastShootTime = Time.time;
                 }
                 
@@ -115,5 +122,11 @@ public class BossShoot : MonoBehaviour
         
 
         
+    }
+
+    private void PlayShotSound()
+    {
+        audioSource.PlayOneShot(shotSe);
+        Debug.Log("Shot sound played");
     }
 }

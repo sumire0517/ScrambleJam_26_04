@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - PlayerBullet: {instanceID: 0}
+  - shotSe: {fileID: 8300000, guid: cc36685c5fb4547f4a32b7078d8459bb, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
