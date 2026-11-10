@@ -19,12 +19,17 @@ public class BossControler : MonoBehaviour
     private double lastMoveTime = 0.0f;
     private Vector3 targetPosition;
     public float smoothTime = 0.4f;
+    private bool isDead = false;
+    public Sprite[] deathSprites;
+
+    private SpriteRenderer spriteRenderer;
     
 
     void Start()
     {
         bossHealth = maxBossHealth;
         transform.position = ClampBossPosition(transform.position);
+        spriteRenderer = GetComponent<SpriteRenderer>();
         targetPosition = new Vector3(transform.position.x, 3.0f, 0f);
     }
 
@@ -34,9 +39,7 @@ public class BossControler : MonoBehaviour
         if (bossHealth <= 0)
         {
             DestroyBoss();
-            Debug.Log("Boss Destroyed");
-            PlayerControler.SuppressGameOver();
-            SceneManager.LoadScene("GameClear");
+            return;
         }
 
         if (Time.time - lastMoveTime > 2.5f)
@@ -66,8 +69,35 @@ public class BossControler : MonoBehaviour
         return position;
     }
 
-    public void DestroyBoss()
+
+
+
+        public void DestroyBoss()
     {
+        if (isDead) return;
+
+        isDead = true;
+        PlayerControler.SuppressGameOver();
+        StartCoroutine(DeathAnimationAndLoadScene());
+    }
+
+    private IEnumerator DeathAnimationAndLoadScene()
+    {
+        yield return DeathAnimation();
+        SceneManager.LoadScene("GameClear");
+    }
+
+    private IEnumerator DeathAnimation()
+    {
+        // 画像を順番に切り替える
+        for (int i = 0; i < deathSprites.Length; i++)
+        {
+            spriteRenderer.sprite = deathSprites[i];
+
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        // 最後にプレイヤーを消す
         Destroy(gameObject);
     }
 }

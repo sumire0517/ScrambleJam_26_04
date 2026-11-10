@@ -2582,8 +2582,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossHealth: 5000
-  maxBossHealth: 5000
+  maxBossHealth: 20
   smoothTime: 0.4
+  deathSprites:
+  - {fileID: 4620606198890664569, guid: 05d755fb4c45a42629b97fcf4df7e10d, type: 3}
+  - {fileID: -4487089060651541357, guid: 324f594ece0f5471bbb597cf7527316a, type: 3}
+  - {fileID: 6451675079572332129, guid: 9329689ea8d4e45edb57f812afb0e463, type: 3}
+  - {fileID: -1201530849835485309, guid: d26a0279362d540c580682cf753fa2bc, type: 3}
+  - {fileID: 1363601371124820387, guid: f4ad96538070e483291d7190a46d5d03, type: 3}
+  - {fileID: 5878952657301443667, guid: e36086e2dcb8a4199abc5bb728773fef, type: 3}
+  - {fileID: 1896601402738215751, guid: 30b1d284c00494b4c81bd25bfa08b040, type: 3}
+  - {fileID: 8182015910658423748, guid: 9cafc057cd31e420f93113f837bb1531, type: 3}
+  - {fileID: 5673038742817561517, guid: c56f5c2a28d5a40f58ecad39968c42bf, type: 3}
+  - {fileID: -4060598661639022239, guid: e9eae5131e52840dcb0951cf62e45913, type: 3}
+  - {fileID: -1326442593191653316, guid: 7d533801026ff4a6a9e8d93fe4c3bbd2, type: 3}
+  - {fileID: -6916323186981183075, guid: 09423d3fae37544419580687d2062140, type: 3}
 --- !u!114 &1391007657
 MonoBehaviour:
   m_ObjectHideFlags: 0
