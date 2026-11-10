@@ -6,13 +6,6 @@ public class PlayerBullet : MonoBehaviour
     public float playerBulletDamage = 15f;
     public Collider2D other;
     public AudioClip hitSe; 
-    private AudioSource audioSource;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -41,8 +34,10 @@ public class PlayerBullet : MonoBehaviour
 
     private void PlayerShotSound()
     {
-        audioSource.PlayOneShot(hitSe);
-        Debug.Log("Player hit sound played");
+        if (hitSe != null)
+        {
+            AudioSource.PlayClipAtPoint(hitSe, transform.position);
+        }
     }
 
 

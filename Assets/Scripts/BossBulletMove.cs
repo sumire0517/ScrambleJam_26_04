@@ -10,7 +10,7 @@ public class BossBulletMove : MonoBehaviour
     private AudioSource audioSource;
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -88,7 +88,9 @@ public class BossBulletMove : MonoBehaviour
 
     private void bossShotSound()
     {
-        audioSource.PlayOneShot(hitSe);
-        Debug.Log("Boss hit sound played");
+        if (hitSe != null)
+        {
+            AudioSource.PlayClipAtPoint(hitSe, transform.position);
+        }
     }
 }
