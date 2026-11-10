@@ -25,6 +25,10 @@ public class PlayerControler : MonoBehaviour
     private static bool hadMultiplePlayers;
     private static bool suppressGameOver;
     private bool isRegistered;
+    private bool isDead = false;
+    public Sprite[] deathSprites;
+
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
@@ -40,6 +44,7 @@ public class PlayerControler : MonoBehaviour
         player1Health = maxPlayer1Health;
         player2Health = maxPlayer2Health;
         rb2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (gameObject.CompareTag("Player"))
         {
@@ -101,8 +106,27 @@ public class PlayerControler : MonoBehaviour
         }   
     }
 
-        public void DestroyPlayer()
+    public void DestroyPlayer()
     {
+        if (isDead) return;
+
+        isDead = true;
+        StartCoroutine(DeathAnimation());
+    }
+
+    IEnumerator DeathAnimation()
+    {
+        // 画像を順番に切り替える
+        for (int i = 0; i < deathSprites.Length; i++)
+        {
+            spriteRenderer.sprite = deathSprites[i];
+
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        // 最後にプレイヤーを消す
         Destroy(gameObject);
     }
+
+
 }

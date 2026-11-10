@@ -298,6 +298,10 @@ MonoBehaviour:
   player2Health: 0
   maxPlayer1Health: 100
   maxPlayer2Health: 100
+  deathSprites:
+  - {fileID: -1953306202403236828, guid: 266af6028a87543239aa18a76bc8fa89, type: 3}
+  - {fileID: -3069374142072745102, guid: 0127241468d364f949bc669a07d37922, type: 3}
+  - {fileID: -3510159954576873466, guid: 9a3f51f0c57f849c796a332ae146bd41, type: 3}
 --- !u!114 &40164789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2853,6 +2857,10 @@ MonoBehaviour:
   player2Health: 0
   maxPlayer1Health: 100
   maxPlayer2Health: 100
+  deathSprites:
+  - {fileID: 21300000, guid: b39a9e553d7464e62b65ec7d69804aca, type: 3}
+  - {fileID: 21300000, guid: 30c43bac37fe54ee283c963ca7caffbc, type: 3}
+  - {fileID: 21300000, guid: be713551a85834930a7ce8cdf5c8319a, type: 3}
 --- !u!222 &1898979123
 CanvasRenderer:
   m_ObjectHideFlags: 0
