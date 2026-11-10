@@ -6,9 +6,11 @@ public class BossBulletMove : MonoBehaviour
     [SerializeField] private float bossBulletSpeed = 3f;
     [SerializeField] public float bossBulletDamage = 20f;
     public Collider2D other;
+    public AudioClip hitSe; 
+    private AudioSource audioSource;
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,7 @@ public class BossBulletMove : MonoBehaviour
                     if (objName == "BulletBossMinus(Clone)")
                     {
                         player.player1Health -= 1.5f * bossBulletDamage; 
+                        bossShotSound();
                         
                     }
                     else if (objName == "BulletBossPlus(Clone)")
@@ -47,8 +50,10 @@ public class BossBulletMove : MonoBehaviour
                     else
                     {
                         player.player1Health -= bossBulletDamage; 
+                        bossShotSound();
                         
                     }
+                   
                     
 
                 }
@@ -65,17 +70,25 @@ public class BossBulletMove : MonoBehaviour
                     else if (objName == "BulletBossPlus(Clone)")
                     {
                         player.player2Health -= 1.5f * bossBulletDamage; 
+                        bossShotSound();
                     }
                     else
                     {
                         player.player2Health -= bossBulletDamage; 
+                        bossShotSound();
                     }
-
+                    
                 }
 
                 Destroy(gameObject); 
             
             }
                    
+    }
+
+    private void bossShotSound()
+    {
+        audioSource.PlayOneShot(hitSe);
+        Debug.Log("Boss hit sound played");
     }
 }

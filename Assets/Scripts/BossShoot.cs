@@ -129,7 +129,6 @@ public class BossShoot : MonoBehaviour
     private void PlayShotSound()
     {
         audioSource.PlayOneShot(shotSe);
-        Debug.Log("Shot sound played");
     }
 
     private GameObject nextBullet()

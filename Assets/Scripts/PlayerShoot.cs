@@ -32,7 +32,7 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
-        private void PlayShotSound()
+    private void PlayShotSound()
     {
         audioSource.PlayOneShot(shotSe);
 
