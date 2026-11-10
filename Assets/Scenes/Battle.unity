@@ -2530,7 +2530,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -3.5779543}
+  m_Offset: {x: 0, y: -6.028494}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2540,7 +2540,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 13, y: 5}
+  m_Size: {x: 13, y: 1.3774629}
   m_EdgeRadius: 0
 --- !u!50 &1391007655
 Rigidbody2D:
@@ -2582,7 +2582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossHealth: 5000
-  maxBossHealth: 20
+  maxBossHealth: 5000
   smoothTime: 0.4
   deathSprites:
   - {fileID: 4620606198890664569, guid: 05d755fb4c45a42629b97fcf4df7e10d, type: 3}

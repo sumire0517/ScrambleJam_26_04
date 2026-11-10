@@ -150,6 +150,10 @@ MonoBehaviour:
   playerBulletDamage: 10
   other: {fileID: 0}
   hitSe: {fileID: 8300000, guid: 910f62a56558b4ebbad022a8088b6160, type: 3}
+  deathSprites:
+  - {fileID: 9198543824932018509, guid: 1d7c011febdfa418eb8f671ee0f7648b, type: 3}
+  - {fileID: -4903067914526668119, guid: 3566972c176844285a3bd6c05e6f19ea, type: 3}
+  - {fileID: 7727493244634397057, guid: a391b52ffbc00480390e273ba1b2905d, type: 3}
 --- !u!58 &3725825838060522188
 CircleCollider2D:
   m_ObjectHideFlags: 0
