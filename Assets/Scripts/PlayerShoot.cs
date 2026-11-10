@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
     public GameObject PlayerBullet;  
+    public GameObject shotEffect;
     private double lastShootTime_1 = 0.0f;
     private double lastShootTime_2 = 0.0f;
     public AudioClip shotSe; 
@@ -16,18 +18,33 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKey(KeyCode.Space) && gameObject.CompareTag("Bullet1") && (Time.time - lastShootTime_1 > 0.1f))  
+        bool isBullet1 = gameObject.CompareTag("Bullet1");
+        bool isBullet2 = gameObject.CompareTag("Bullet2");
+        if (!isBullet1 && !isBullet2)
         {
-            Instantiate(PlayerBullet, this.transform.position, Quaternion.identity);                         
+            return;
+        }
+
+        Keyboard keyboard = Keyboard.current;
+        bool isShootingBullet1 = isBullet1 && keyboard != null && keyboard.spaceKey.isPressed;
+        bool isShootingBullet2 = isBullet2 && keyboard != null && keyboard.enterKey.isPressed;
+
+        if (shotEffect != null)
+        {
+            shotEffect.SetActive(isShootingBullet1 || isShootingBullet2);
+        }
+
+        if (isShootingBullet1 && (Time.time - lastShootTime_1 > 0.1f))
+        {
+            Instantiate(PlayerBullet, transform.position, Quaternion.identity);
             lastShootTime_1 = Time.time;
             PlayShotSound();
         }
 
-        if (Input.GetKey(KeyCode.Return) && gameObject.CompareTag("Bullet2") && (Time.time - lastShootTime_2 > 0.1f))   
+        if (isShootingBullet2 && (Time.time - lastShootTime_2 > 0.1f))
         {
-            Instantiate(PlayerBullet, this.transform.position, Quaternion.identity); 
-            lastShootTime_2 = Time.time;    
+            Instantiate(PlayerBullet, transform.position, Quaternion.identity);
+            lastShootTime_2 = Time.time;
             PlayShotSound();
         }
     }
