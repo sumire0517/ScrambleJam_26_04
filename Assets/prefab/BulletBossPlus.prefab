@@ -214,6 +214,10 @@ MonoBehaviour:
   bossBulletDamage: 20
   other: {fileID: 0}
   hitSe: {fileID: 8300000, guid: 23f1233b3cd8b4238821063c765ff163, type: 3}
+  deathSprites:
+  - {fileID: -9201662896265294650, guid: 77e67d3b2d7c742fc835499f0594bc10, type: 3}
+  - {fileID: -4433487388489436652, guid: d436ad5229c3545a5b8c133c1e16985b, type: 3}
+  - {fileID: 7560929896845673958, guid: 2e700361a5a9549c9b31f41f6735152e, type: 3}
 --- !u!82 &7781332355665261190
 AudioSource:
   m_ObjectHideFlags: 0

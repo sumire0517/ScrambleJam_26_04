@@ -8,6 +8,7 @@ public class PlayerBullet : MonoBehaviour
     public Collider2D other;
     public AudioClip hitSe; 
     public Sprite[] deathSprites;
+    private bool isHit = false;
 
     private SpriteRenderer spriteRenderer;
     void Start()
@@ -18,6 +19,7 @@ public class PlayerBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isHit) return;
         transform.Translate(0, playerBulletSpeed * Time.deltaTime, 0);
         if (transform.position.y > 5f)
         {
@@ -52,7 +54,7 @@ public class PlayerBullet : MonoBehaviour
 
     public void DestroyBullet()
     {
-
+        isHit = true;
         StartCoroutine(DeathAnimation());
     }
     private IEnumerator DeathAnimation()
@@ -61,7 +63,6 @@ public class PlayerBullet : MonoBehaviour
         
         for (int i = 0; i < deathSprites.Length; i++)
         {
-            Debug.Log("Death animation sprite index: " + i); // デバッグ用のログ
        
             spriteRenderer.sprite = deathSprites[i];
 

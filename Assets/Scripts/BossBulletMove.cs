@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BossBulletMove : MonoBehaviour
 {
@@ -8,14 +9,18 @@ public class BossBulletMove : MonoBehaviour
     public Collider2D other;
     public AudioClip hitSe; 
     private AudioSource audioSource;
+    public Sprite[] deathSprites;
+    private bool isHit = false;
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isHit) return;
         transform.Translate(0, -bossBulletSpeed * Time.deltaTime, 0);
         if ((transform.position.y < -5f) || (transform.position.y > 5f) ||(transform.position.x < -9f) || (transform.position.x > 9f))
         {
@@ -80,7 +85,7 @@ public class BossBulletMove : MonoBehaviour
                     
                 }
 
-                Destroy(gameObject); 
+                DestroyBullet();
             
             }
                    
@@ -92,5 +97,29 @@ public class BossBulletMove : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(hitSe, transform.position);
         }
+    }
+
+
+
+    public void DestroyBullet()
+    {
+
+        isHit = true;
+        StartCoroutine(DeathAnimation());
+    }
+    private IEnumerator DeathAnimation()
+    {
+        // 画像を順番に切り替える
+        
+        for (int i = 0; i < deathSprites.Length; i++)
+        {
+       
+            spriteRenderer.sprite = deathSprites[i];
+
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        // 最後にプレイヤーを消す
+        Destroy(gameObject);
     }
 }
