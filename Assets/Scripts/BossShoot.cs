@@ -27,11 +27,11 @@ public class BossShoot : MonoBehaviour
             return;
         }
 
-        if (Time.time > 3.0f)
+        if (Time.time > 5.0f)
         {
             if (bossControler.bossHealth > 4000)
             {
-                if (Time.time - lastShootTime > 0.5f)
+                if (Time.time - lastShootTime > 0.6f)
                 {
                     
                     for (int i = 0; i < 36; i++)
@@ -46,7 +46,7 @@ public class BossShoot : MonoBehaviour
             else if  (bossControler.bossHealth > 3000)
             {
                 
-                if (Time.time - lastShootTime > 0.05f)
+                if (Time.time - lastShootTime > 0.08f)
                 {
                     
                     Quaternion rotation = Quaternion.Euler(0f, 0f, 10 * bulletCount);
@@ -78,7 +78,7 @@ public class BossShoot : MonoBehaviour
             }
             else if  (bossControler.bossHealth > 2000)
             {
-                if (Time.time - lastShootTime > 0.01f)
+                if (Time.time - lastShootTime > 0.015f)
                 {
                     lastShootTime = Time.time;
                     float add = Random.Range(-3f, 3f);
@@ -90,7 +90,7 @@ public class BossShoot : MonoBehaviour
             }
             else if  (bossControler.bossHealth > 1000)
             {
-                if (Time.time - lastShootTime > 0.3f)
+                if (Time.time - lastShootTime > 0.4f)
                 {
                     for (int i = 0; i < 10; i++)
                     {
@@ -108,7 +108,7 @@ public class BossShoot : MonoBehaviour
             }
             else
             {
-                if (Time.time - lastShootTime > 0.02f)  
+                if (Time.time - lastShootTime > 0.03f)  
                 {
                     angle += 10f; 
                     Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
