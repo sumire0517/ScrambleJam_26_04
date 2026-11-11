@@ -78,7 +78,7 @@ public class BossShoot : MonoBehaviour
             }
             else if  (bossControler.bossHealth > 2000)
             {
-                if (Time.time - lastShootTime > 0.015f)
+                if (Time.time - lastShootTime > 0.01f)
                 {
                     lastShootTime = Time.time;
                     float add = Random.Range(-3f, 3f);
@@ -87,6 +87,8 @@ public class BossShoot : MonoBehaviour
                     PlayShotSound();
                 }
                 bulletCount += 1;
+
+
             }
             else if  (bossControler.bossHealth > 1000)
             {
@@ -108,6 +110,7 @@ public class BossShoot : MonoBehaviour
             }
             else
             {
+
                 if (Time.time - lastShootTime > 0.03f)  
                 {
                     angle += 10f; 
@@ -118,7 +121,6 @@ public class BossShoot : MonoBehaviour
                     PlayShotSound();
                     lastShootTime = Time.time;
                 }
-                
             }
         }
         
