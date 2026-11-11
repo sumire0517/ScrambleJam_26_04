@@ -13,10 +13,12 @@ public class BossShoot : MonoBehaviour
     public AudioClip shotSe; 
     private AudioSource audioSource;
     bool flag = true;
+    private bool canUpdate = false;
     void Start()
     {
         bossControler = GetComponentInParent<BossControler>();
         audioSource = GetComponent<AudioSource>();
+    
     }
 
     // Update is called once per frame

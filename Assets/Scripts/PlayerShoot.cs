@@ -26,7 +26,7 @@ public class PlayerShoot : MonoBehaviour
         }
 
         Keyboard keyboard = Keyboard.current;
-        bool isShootingBullet1 = isBullet1 && keyboard != null && keyboard.spaceKey.isPressed;
+        bool isShootingBullet1 = isBullet1 && keyboard != null && (keyboard.spaceKey.isPressed || keyboard.enterKey.isPressed || Keyboard.current.zKey.isPressed);
         bool isShootingBullet2 = isBullet2 && keyboard != null && keyboard.enterKey.isPressed;
 
         if (shotEffect != null)

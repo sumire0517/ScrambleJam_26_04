@@ -66,9 +66,8 @@ public class PlayerControler : MonoBehaviour
 
         activePlayerCount = Mathf.Max(0, activePlayerCount - 1);
 
-        if (activePlayerCount == 0 && hadMultiplePlayers && !suppressGameOver)
+        if (gameObject.CompareTag("Player") && player1Health <= 0 && !suppressGameOver)
         {
-            //Debug.Log("Both players destroyed");
             hadMultiplePlayers = false;
             SceneManager.LoadScene("GameOver");
         }
